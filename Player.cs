@@ -6,9 +6,18 @@ public partial class Player : CharacterBody2D
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 
+	[Export]
+	public	Node2D	caboom;
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
+
+		if (Input.IsActionJustPressed("jump"))
+		{
+			// AddChild()
+		}
+		
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
