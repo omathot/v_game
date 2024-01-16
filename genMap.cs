@@ -133,7 +133,8 @@ public partial class genMap : TileMap
 			for (int j = ((int)(camera.Position.Y) - 360) / 32; j  < ((int)(camera.Position.Y) + 360) / 32; j++)
 			{
 				Vector2I curent_tile = new Vector2I(i, j);
-				SetCell(0, curent_tile, 1, Get_right_cell_type(i, j));
+				if (GetCellTileData(0, curent_tile, true) == null)
+					SetCell(0, curent_tile, 1, Get_right_cell_type(i, j));
 			}
 		}
 	}
