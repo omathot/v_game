@@ -12,24 +12,21 @@ public partial class Player : CharacterBody2D
 		
 		
 	// }
+	PackedScene scene = GD.Load<PackedScene>("res://caboom_attack.tscn");
 
 	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed("jump"))
 		{
-			GD.Print("Hello, Godot!");
-			Node instant = scene.Instantiate(); 
+			Node instant = scene.Instantiate();
 			AddChild(instant);
 		}
 	}
-
-	PackedScene scene = GD.Load<PackedScene>("res://MyScene.tscn");
 
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 		
-
 		// GD.Print("Hello, Godot!");
 		// AddChild(GetNode("res://caboom_attack.tscn"));
 		// Get the input direction and handle the movement/deceleration.

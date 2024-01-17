@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ft35oq8ma1w"]
+
+[ext_resource type="Script" path="res://Ennemy.cs" id="1_fgigt"]
+[ext_resource type="Texture2D" uid="uid://lhtsjpxpgo7q" path="res://Zombie.png" id="2_thv5f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhubw"]
+
+[node name="Ennemy" type="CharacterBody2D"]
+script = ExtResource("1_fgigt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_thv5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CapsuleShape2D_rhubw")

@@ -3,13 +3,13 @@ using System;
 
 public partial class Ennemy : CharacterBody2D
 {
-	public const float Speed = 300.0f;
+	public const float Speed = 200.0f;
 
 	private CharacterBody2D player;
 	public override void _Ready()
 	{
 		// Assuming the player node is named "Player" and is at the root
-		player = GetNode<CharacterBody2D>("../Player");
+		player = GetNode<CharacterBody2D>("/root/Node2D/Player");
 	}
 	public override void _PhysicsProcess(double delta)
 	{

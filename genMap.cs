@@ -128,7 +128,7 @@ public partial class genMap : TileMap
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		for (int i = ((int)(camera.Position.X) - 550) / 32; i < ((int)(camera.Position.X) + 550) / 32; i++)
+		for (int i = ((int)(camera.Position.X) - 600) / 32; i < ((int)(camera.Position.X) + 600) / 32; i++)
 		{
 			for (int j = ((int)(camera.Position.Y) - 360) / 32; j  < ((int)(camera.Position.Y) + 360) / 32; j++)
 			{

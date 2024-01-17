@@ -9,8 +9,15 @@ public partial class Caboom_attack : Node2D
 	{
 		// GetChild<Sprite2D>(0).Visible = false;
 		AddChild(timer);
-		timer.WaitTime = 2f;
+		timer.WaitTime = 0.5f;
+		timer.OneShot = true;
+		Callable callable = new Callable(this, MethodName._on_timer_timeout);
+		timer.Connect("timeout", callable);
 		timer.Start();
+	}
+	public void _on_timer_timeout()
+	{
+		QueueFree();
 	}
 
 	Godot.Collections.Array<Node2D>	Bodies;
@@ -20,10 +27,16 @@ public partial class Caboom_attack : Node2D
 		Bodies = GetChild<Area2D>(1).GetOverlappingBodies();
 		foreach (var item in Bodies)
 		{
+			GD.Print("see this");
+			GD.Print(item.Name);
 			if (item.Name == "Ennemy")
 				item.QueueFree();
 		}
-		if (timer.IsStopped())
-		QueueFree();
+		GD.PrintRich(timer.WaitTime);
+		// if ( += )
+		// {
+		// 	GD.Print("died");
+		// 	QueueFree();
+		// }
 	}
 }

@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dt5whnxrangjm" path="res://player.tscn" id="2_4b840"]
 [ext_resource type="Texture2D" uid="uid://b6pr4fqr75xvy" path="res://tile pokemon onlu ok.png" id="2_aukmg"]
 [ext_resource type="Script" path="res://genMap.cs" id="3_yf5iw"]
-[ext_resource type="Texture2D" uid="uid://lhtsjpxpgo7q" path="res://Zombie.png" id="4_g746y"]
-[ext_resource type="Script" path="res://Ennemy.cs" id="4_xhp7h"]
+[ext_resource type="PackedScene" uid="uid://c7ft35oq8ma1w" path="res://ennemy.tscn" id="5_w2feb"]
 [ext_resource type="Script" path="res://CameraPlayer.cs" id="7_6s10u"]
 [ext_resource type="Script" path="res://WaveSpawner.cs" id="8_fbps0"]
+[ext_resource type="Texture2D" uid="uid://1rvkd71k3ejn" path="res://Top Down/Image_from_i.pinimg.com.jpg" id="9_vwn2m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6xkrr"]
 texture = ExtResource("1_u81m0")
@@ -293,7 +293,8 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_kod5a")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhubw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vixww"]
+size = Vector2(78, 86)
 
 [node name="Node2D" type="Node2D"]
 
@@ -311,21 +312,32 @@ script = ExtResource("3_yf5iw")
 
 [node name="Player" parent="." instance=ExtResource("2_4b840")]
 
-[node name="Ennemy" type="CharacterBody2D" parent="."]
-position = Vector2(50, 2.08165e-12)
-script = ExtResource("4_xhp7h")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ennemy"]
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("4_g746y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ennemy"]
-scale = Vector2(0.8, 0.8)
-shape = SubResource("CapsuleShape2D_rhubw")
+[node name="Ennemy" parent="." instance=ExtResource("5_w2feb")]
+position = Vector2(60.96, -1)
 
 [node name="CameraPlayer" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 script = ExtResource("7_6s10u")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(58, 59)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_vwn2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+shape = SubResource("RectangleShape2D_vixww")
+
+[node name="Wall" type="StaticBody2D" parent="Wall"]
+position = Vector2(52, -84)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall/Wall"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_vwn2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Wall"]
+shape = SubResource("RectangleShape2D_vixww")
 
 [node name="WaveSpawner" type="Node2D" parent="."]
 script = ExtResource("8_fbps0")
