@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlcn3jercdydg"]
+
+[ext_resource type="Texture2D" uid="uid://bk8in8qbwdnsk" path="res://graphics/attacks/Circular saw.png" id="1_15h8p"]
+[ext_resource type="Script" path="res://scripts/attacks/orbit_attack.cs" id="1_40hk5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hhvun"]
+radius = 21.095
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y3rcb"]
+radius = 21.0238
+
+[node name="orbitAttack" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_40hk5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_15h8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_hhvun")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_y3rcb")

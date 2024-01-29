@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://85efrfieqjfc"]
+
+[ext_resource type="Script" path="res://scripts/ennemy/Ennemy.cs" id="1_xj4hj"]
+[ext_resource type="Texture2D" uid="uid://bvrctl87rscjd" path="res://graphics/ennemy/bigArmor.png" id="2_7mbo1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_slf11"]
+radius = 21.875
+height = 66.25
+
+[node name="Ennemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_xj4hj")
+Speed = 130.0
+Health = 100.0
+Damage = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.115769, 0.116714)
+texture = ExtResource("2_7mbo1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CapsuleShape2D_slf11")
